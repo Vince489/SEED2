@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; /* Reduced margin for better mobile layout */
+  padding: 0 10px; /* Add padding to prevent elements from touching screen edges */
+}
+h1 {
+  font-size: 24px; /* Adjusted font size */
+  text-align: center; /* Center text for better alignment */
+}
+canvas {
+  border: 1px solid #000;
+  margin-top: 20px;
+  max-width: 100%; /* Make canvas responsive */
+  max-height: 300px; /* Set maximum height for the canvas */
+  height: auto; /* Maintain the original aspect ratio */
+  width: auto; /* Maintain the original aspect ratio */
+}
+.controls {
+  margin-top: 20px;
+  width: 100%; /* Ensure controls take full width */
+}
+.control-group {
+  margin-bottom: 10px;
+  width: 100%; /* Ensure control groups take full width */
+  display: flex;
+  flex-direction: column; /* Stack controls vertically */
+  align-items: center; /* Center controls */
+}
+label {
+  margin-bottom: 5px; /* Space between label and input */
+  font-size: 14px; /* Slightly smaller font size for labels */
+}
+input[type="text"], input[type="range"] {
+  width: 100%; /* Make inputs full-width */
+  max-width: 300px; /* Set a max-width to inputs */
+  padding: 5px; /* Add some padding for better UX */
+  font-size: 14px; /* Ensure consistent font size */
+}
+button {
+  padding: 10px 20px; /* Add padding to buttons */
+  font-size: 14px; /* Consistent font size */
+  cursor: pointer; /* Change cursor to pointer for buttons */
+}
+
+@media (max-width: 600px) {
+  h1 {
+      font-size: 20px; /* Smaller heading on mobile */
+  }
+  button {
+      width: 100%; /* Make buttons full-width on mobile */
+  }
+  canvas {
+      max-height: 200px; /* Reduce maximum height on mobile */
+  }
+}
+
+/* Add this to your style.css */
+#loadingIndicator {
+  position: fixed; /* Make it fixed to the viewport */
+  top: 50%; /* Center it vertically */
+  left: 50%; /* Center it horizontally */
+  transform: translate(-50%, -50%); /* Centering adjustment */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  border: 1px solid #ccc; /* Optional border */
+  padding: 20px; /* Space around the text */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for better visibility */
+  z-index: 1000; /* Ensure it's on top of other elements */
+  font-size: 20px; /* Larger font size for visibility */
+  display: none; /* Initially hidden */
+}
+

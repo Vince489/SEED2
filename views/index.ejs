@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Color Quantization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Simplify Image with Color Quantization</h1>
+  <input type="file" id="upload" accept="image/*">
+  <canvas id="originalCanvas"></canvas>
+  <canvas id="simplifiedCanvas"></canvas>
+  
+  <div class="controls">
+      <div class="control-group">
+          <label for="quantization">Quantization Level:</label>
+          <input type="range" id="quantization" min="8" max="256" step="8" value="96">
+          <span id="quantizationValue">96</span>
+      </div>
+      <div class="control-group">
+          <label for="seedInput">Seed (leave empty for random):</label>
+          <input type="text" id="seedInput">
+          <button id="generate">Generate</button>
+      </div>
+      <div class="control-group">
+          <button id="download">Download</button>
+      </div>
+      <div class="control-group">
+          <label for="generatedSeed">Generated Seed:</label>
+          <span id="generatedSeed">Randomly selected seed will appear here.</span>
+      </div>
+  </div>
+  
+  <!-- Loading indicator -->
+  <div id="loadingIndicator" style="display: none;">Processing... Please wait.</div>
+
+  <script src="script.js"></script>
+</body>
+
+
+</html>
