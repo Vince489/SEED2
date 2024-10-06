@@ -13,23 +13,53 @@
   <canvas id="simplifiedCanvas"></canvas>
   
   <div class="controls">
-      <div class="control-group">
-          <label for="quantization">Quantization Level:</label>
-          <input type="range" id="quantization" min="8" max="256" step="8" value="96">
-          <span id="quantizationValue">96</span>
-      </div>
-      <div class="control-group">
-          <label for="seedInput">Seed (leave empty for random):</label>
-          <input type="text" id="seedInput">
-          <button id="generate">Generate</button>
-      </div>
-      <div class="control-group">
-          <button id="download">Download</button>
-      </div>
-      <div class="control-group">
-          <label for="generatedSeed">Generated Seed:</label>
-          <span id="generatedSeed">Randomly selected seed will appear here.</span>
-      </div>
+    <div class="control-group">
+        <label for="generationModel">Generation Model:</label>
+        <select id="generationModel">
+            <option value="single">Single</option>
+            <option value="group">Group</option>
+            <option value="custom">Custom</option>
+        </select>
+    </div>
+
+    <div class="control-group">
+        <label for="baseModelSelect">Select Base Model:</label>
+        <select id="baseModelSelect">
+            <option value="LP">Low Precision (LP)</option>
+            <option value="MP">Medium Precision (MP)</option>
+            <option value="MHP">Medium-High Precision (MHP)</option>
+            <option value="HP">High Precision (HP)</option>
+        </select>
+    </div>
+    
+    <div class="control-group">
+        <label for="samplerSelect">Select Sampler:</label>
+        <select id="samplerSelect"></select>
+    </div>
+
+    <div class="control-group">
+        <label for="pixelationSelect">Pixelation Level:</label>
+        <select id="pixelationSelect">
+            <option value="1">1 Pixel</option>
+            <option value="2">2 Pixels</option>
+            <option value="4">4 Pixels</option>
+        </select>
+    </div>
+    
+    <div class="control-group">
+        <label for="seedInput">Seed (leave empty for random):</label>
+        <input type="text" id="seedInput">
+        <button id="generate">Generate</button>
+    </div>
+
+    <div class="control-group">
+        <button id="download">Download</button>
+    </div>
+    
+    <div class="control-group">
+        <label for="generatedSeed">Generated Seed:</label>
+        <span id="generatedSeed">Randomly selected seed will appear here.</span>
+    </div>
   </div>
   
   <!-- Loading indicator -->
@@ -37,6 +67,4 @@
 
   <script src="script.js"></script>
 </body>
-
-
 </html>
