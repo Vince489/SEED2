@@ -3,7 +3,36 @@ let uploadedImage; // Store the uploaded image
 let originalCtx; // Declare originalCtx in the global scope
 const worker = new Worker('quantizeWorker.js'); // Create a new Web Worker
 
-// Event listeners
+// Define sampler options for each model
+const samplers = {
+    LP: [2, 4, 6, 8, 10],
+    MP: [12, 14, 16, 18],
+    MHP: [20, 24, 28, 32],
+    HP: [48, 64, 96, 128]
+};
+
+// Event listeners for dynamic sampler selection
+document.getElementById('baseModelSelect').addEventListener('change', function () {
+    const selectedModel = this.value;
+    const samplerSelect = document.getElementById('samplerSelect');
+    
+    // Clear previous sampler options
+    samplerSelect.innerHTML = '';
+
+    // Populate sampler dropdown based on selected base model
+    const modelSamplers = samplers[selectedModel];
+    modelSamplers.forEach(sampler => {
+        const option = document.createElement('option');
+        option.value = sampler;
+        option.textContent = `${sampler} Sampler`;
+        samplerSelect.appendChild(option);
+    });
+});
+
+// Trigger initial population on page load
+document.getElementById('baseModelSelect').dispatchEvent(new Event('change'));
+
+// Event listeners for image processing
 document.getElementById('upload').addEventListener('change', handleImageUpload);
 document.getElementById('quantization').addEventListener('input', updateQuantizationValue);
 document.getElementById('generate').addEventListener('click', processImage);
@@ -107,12 +136,9 @@ function processImage() {
     };
 }
 
-
 // Handle worker response
 worker.onmessage = function(e) {
-    // Hide loading indicator
-    document.getElementById('loadingIndicator').style.display = 'none';
-
+    document.getElementById('loadingIndicator').style.display = 'none'; // Hide loading indicator
     const quantizedPixels = e.data;
     drawQuantizedImage(quantizedPixels);
 };
@@ -151,6 +177,3 @@ function downloadImage() {
     link.download = 'quantized-image.png';
     link.click();
 }
-
-// Additional functions for quantization...
-
